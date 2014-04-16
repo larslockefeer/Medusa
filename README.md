@@ -16,6 +16,7 @@ Generate class diagrams for a folder containing Objective-C header files.
 
 # Future feature ideas
 
+* Use some (simple) templating system for the graph generation instead of the current implementation
 * Add tests to ensure that the parser parses correctly
 * Support for multiple interface definitions in a single header
 * Add an option to supply a list to limit the classes included in the diagram

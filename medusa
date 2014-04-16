@@ -14,7 +14,7 @@ opt_parser = OptionParser.new do |opt|
   opt.separator  "OUTPUT_PATH"
   opt.separator  "     The path at which to put the generated diagram. The output will be a PDF file, so you'll want this to end in .pdf"
   opt.separator  ""
-  opt.separator  "Options"
+  opt.separator  "Available options"
 
   opt.on("-p", "--prune-orphans", "Prune orphans from the diagram?") do
     options[:prune_orphans] = true
