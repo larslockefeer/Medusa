@@ -4,7 +4,18 @@ Generate class diagrams for a folder containing Objective-C header files.
 
 # Usage
 
-`medusa INPUT_PATH OUTPUT_PATH [OPTIONS]`
+```
+Generates a PDF class diagram from a set of source files
+Usage: medusa INPUT_PATH OUTPUT_PATH [OPTIONS]
+
+INPUT_PATH
+     The path to the source files to parse
+OUTPUT_PATH
+     The path at which to put the generated diagram. The output will be a PDF file, so you'll want this to end in .pdf
+
+Available options
+    -p, --prune-orphans              Prune orphans from the diagram?
+```
 
 # Done
 
