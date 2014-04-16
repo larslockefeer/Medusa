@@ -1,0 +1,36 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require './src/main'
+
+options = {}
+
+opt_parser = OptionParser.new do |opt|
+  opt.banner = "Generates a PDF class diagram from a set of source files"
+  opt.separator  "Usage: medusa INPUT_PATH OUTPUT_PATH [OPTIONS]"
+  opt.separator  ""
+  opt.separator  "INPUT_PATH"
+  opt.separator  "     The path to the source files to parse"
+  opt.separator  "OUTPUT_PATH"
+  opt.separator  "     The path at which to put the generated diagram. The output will be a PDF file, so you'll want this to end in .pdf"
+  opt.separator  ""
+  opt.separator  "Options"
+
+  opt.on("-p", "--prune-orphans", "Prune orphans from the diagram?") do
+    options[:prune_orphans] = true
+  end
+  
+  opt.separator  ""
+  
+end
+
+opt_parser.parse!
+
+if ARGV.count < 2
+  puts opt_parser
+else
+  
+  medusa = Medusa.new(ARGV[0], ARGV[1], options)
+  medusa.run()
+  
+end

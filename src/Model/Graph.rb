@@ -5,8 +5,9 @@
 
 class Graph
   
-  def initialize()
+  def initialize(options)
     
+    @options = options
     @nodes = Hash.new
     @associations = Hash.new
     @inheritances = Hash.new
@@ -26,6 +27,7 @@ class Graph
   end
   
   # TODO: We really want to factor out graph generation to a separate class
+  # TODO: Templating engine
   def generate
     
     generateAssociations()
@@ -38,7 +40,11 @@ class Graph
     
     @nodes.each do |nodeIdentifier, node|
       
-      graph += graphItemForNode(node)
+      if !@options[:prune_orphans] || !nodeIsOrphan(nodeIdentifier)
+      
+        graph += graphItemForNode(node)
+        
+      end
       
     end
     
@@ -52,6 +58,12 @@ class Graph
   end
   
   private
+  
+  def nodeIsOrphan(nodeIdentifier)
+    
+    return !(@associations[nodeIdentifier].count > 0 || @implementations[nodeIdentifier].count > 0 || @inheritances.has_key?(nodeIdentifier))
+    
+  end
   
   def generateAssociations
     
