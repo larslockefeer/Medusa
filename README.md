@@ -2,6 +2,11 @@
 
 Generate class diagrams for a folder containing Objective-C header files.
 
+# Requirements
+
+* Ruby (tested with Ruby 2.0.0)
+* Graphviz (tested with Graphviz 2.34.0)
+
 # Usage
 
 ```
